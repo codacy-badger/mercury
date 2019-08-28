@@ -114,6 +114,7 @@ export default class RabbitMQConnectionFacade {
 
                         messagePool.set(msg.properties.messageId, msg);
                         const message = new JSONMessage(descriptor, msg.content, msg.properties.messageId);
+
                         emitter.emit(descriptor, message);
                     } else {
                         this.channel.ack(msg);
